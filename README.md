@@ -1,73 +1,83 @@
-# Welcome to your Lovable project
+# Library Lending and Subscription Prototype
 
-## Project info
+An experimental React + TypeScript interface exploring subscriber, guarantor, subscription, and lending workflows with Supabase.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+> **Prototype status:** this repository is experimental. It is not a production-ready lending or financial-record system and must not be used with real personal, subscriber, or financial data in its current state.
 
-## How can I edit this code?
+## Features represented in the current source
 
-There are several ways of editing your application.
+- Subscriber and guarantor data-entry workflows
+- Subscription creation, editing, and renewal
+- Loan, return, and late-return screens
+- Online loan-request screens
+- Alerts and reporting pages
+- Supabase client integration and SQL migrations
 
-**Use Lovable**
+## Technology
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- React 18 and TypeScript
+- Vite
+- Supabase JavaScript client
+- React Router
+- Tailwind CSS and shadcn/ui
+- Vitest and ESLint
 
-Changes made via Lovable will be committed automatically to this repo.
+## Requirements
 
-**Use your preferred IDE**
+- Node.js and npm compatible with the versions declared in `package.json` and `package-lock.json`.
+- A Supabase project for local integration testing.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Run locally
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Install dependencies:
 
-Follow these steps:
+   ```bash
+   npm ci
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Create a local environment file from the template:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+   ```bash
+   cp .env.example .env
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Set the Supabase project URL and publishable key in `.env`:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+   ```dotenv
+   VITE_SUPABASE_URL=https://your-project-id.supabase.co
+   VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+## Quality checks
+
+```bash
+npm run lint
+npm test
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+These are the scripts declared by the project; run them locally or in CI before treating a change as verified.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Security limitations — do not deploy as-is
 
-**Use GitHub Codespaces**
+The current migrations include permissive public Row Level Security policies that allow unrestricted operations on tables containing subscriber, guarantor, subscription, loan, and related records. Authentication and least-privilege RLS policies must be designed, implemented, and tested before this prototype can handle any real data.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The Supabase publishable key is intended for browser use, but it does not provide data protection by itself. Never put a Supabase `service_role` key in a `VITE_*` variable or browser bundle.
 
-## What technologies are used for this project?
+The repository's existing `.env` file was already tracked before the environment-file ignore rule was added. A `.gitignore` rule does not untrack an existing file or remove it from Git history. Review the repository history and rotate any credential that was mistakenly exposed. Do not post the key value in issues or discussions.
 
-This project is built with:
+## Related repositories
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- [Main library frontend](https://github.com/OJK22/front)
+- [Books management UI](https://github.com/OJK22/books)
+- [Staff administration UI](https://github.com/OJK22/admin)
 
-## How can I deploy this project?
+## License and project rights
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+No open-source license is currently included. Do not assume permission to reuse or redistribute this code until the rights holder(s) have selected and added an OSI-approved license. Confirm any municipal and team ownership obligations first.
