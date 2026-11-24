@@ -1,73 +1,63 @@
-# Welcome to your Lovable project
+# Library Lending and Subscription Prototype
 
-## Project info
+An experimental React + TypeScript application exploring subscriber, guarantor, subscription, and lending workflows with Supabase.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+> **Prototype warning:** this repository is experimental and is not production-ready. Do not use it with real personal, subscriber, or financial data.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Subscriber and guarantor data-entry workflows
+- Subscription creation, editing, and renewal
+- Loan, return, and late-return screens
+- Online loan-request workflows
+- Alerts and reporting screens
+- Supabase client integration and SQL migrations
 
-**Use Lovable**
+## Technology
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- React 18 and TypeScript
+- Vite and React Router
+- Supabase JavaScript client
+- Tailwind CSS and shadcn/ui
+- Vitest and ESLint
 
-Changes made via Lovable will be committed automatically to this repo.
+## Requirements
 
-**Use your preferred IDE**
+Use a supported Node.js version and npm. A Supabase project is required for integration testing.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Run locally
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm ci
+cp .env.example .env
+# Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in .env
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Quality checks
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run lint
+npm test
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Security limitations
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The current database migrations include permissive Row Level Security policies. Authentication and least-privilege policies must be designed, implemented, and tested before this prototype can handle real data. A Supabase publishable key is intended for client use but does not protect database records by itself. Never expose a `service_role` key in a browser bundle.
 
-## What technologies are used for this project?
+If a real credential was ever committed, rotate it; adding it to `.gitignore` does not remove it from Git history. Do not share secrets or personal data in issues.
 
-This project is built with:
+## Related projects
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- [Main library frontend](https://github.com/OJK22/front)
+- [Books management UI](https://github.com/OJK22/books)
+- [Staff administration UI](https://github.com/OJK22/admin)
 
-## How can I deploy this project?
+## Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This is an exploratory prototype. Contributions should preserve the prototype warning, include clear reproduction steps, and avoid implying production readiness.
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT. See [LICENSE](./LICENSE).
