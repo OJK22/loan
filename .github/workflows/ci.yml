@@ -26,13 +26,17 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
+        id: install
         run: npm ci
 
       - name: Run ESLint
+        if: always() && steps.install.outcome == 'success'
         run: npm run lint
 
       - name: Run tests
+        if: always() && steps.install.outcome == 'success'
         run: npm test
 
       - name: Build production bundle
+        if: always() && steps.install.outcome == 'success'
         run: npm run build
